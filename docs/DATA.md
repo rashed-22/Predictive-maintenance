@@ -34,7 +34,7 @@ Note: a few rows have `machine_failure = 1` with no mode flag set, or a mode fla
 | `temp_diff_k` | process_temperature_k − air_temperature_k | Heat dissipation failure happens when this is small and speed is low |
 | `power_w` | torque_nm × rotational_speed_rpm × 2π / 60 | Power failure happens when power is very low or very high |
 | `strain` | tool_wear_min × torque_nm | Overstrain failure happens when this exceeds a limit that depends on Type |
-| `type` encoding | one-hot (L, M, H) or ordinal L=0, M=1, H=2 | Product quality variant |
+| `type_L`, `type_M`, `type_H` | one-hot of `type` (fixed categories, done in `build_features`; see ARCHITECTURE D8) | Product quality variant |
 
 Scaling (StandardScaler) is done **inside the pipeline**, only for models that need it (logistic regression).
 

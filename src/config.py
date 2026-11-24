@@ -72,16 +72,15 @@ ENGINEERED_COLUMNS: list[str] = ["temp_diff_k", "power_w", "strain"]
 REQUIRED_COLUMNS: list[str] = ID_COLUMNS + RAW_FEATURE_COLUMNS + [TARGET_COLUMN] + LEAKAGE_COLUMNS
 
 # Every column a model may use = raw features + engineered. The final ordered
-# FEATURE_COLUMNS list (after encoding) is defined in src/features.py in Phase 3.
+# FEATURE_COLUMNS list (after encoding) is defined in src/features.py.
 MODEL_INPUT_COLUMNS: list[str] = RAW_FEATURE_COLUMNS + ENGINEERED_COLUMNS
 
 VALID_TYPES: tuple[str, ...] = ("L", "M", "H")
 
 # -------------------------------------------------------------------- physical ranges
-# TO CONFIRM IN EDA (Phase 2). Inclusive (min, max). Initial values come from
-# docs/ARCHITECTURE.md section 4 with a safety margin; observed values in the raw data
-# (checked at scaffold time): air 295.3-304.5, process 305.7-313.8, rpm 1168-2886,
-# torque 3.8-76.6, tool wear 0-253.
+# Confirmed in EDA (Phase 2). Inclusive (min, max). Values come from
+# docs/ARCHITECTURE.md section 4 with a safety margin; observed values in the raw data:
+# air 295.3-304.5, process 305.7-313.8, rpm 1168-2886, torque 3.8-76.6, tool wear 0-253.
 VALUE_RANGES: dict[str, tuple[float, float]] = {
     "air_temperature_k": (290.0, 310.0),
     "process_temperature_k": (300.0, 320.0),
