@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments / secrets
+.venv/
+venv/
+.env
+.env.*
+
+# Data: raw data is never committed (data/sample/ is)
+data/raw/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# NOTE: models/ and reports/ are intentionally tracked (small artefacts).
