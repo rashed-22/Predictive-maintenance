@@ -39,7 +39,8 @@ predictive-maintenance/
 │   ├── features.py       build_features(df), FEATURE_COLUMNS
 │   ├── models.py         candidate pipelines (logreg, rf, xgb, with/without SMOTE)
 │   ├── train.py          CV comparison, tuning, threshold, save artefacts  (python -m src.train)
-│   ├── evaluate.py       test metrics, plots, SHAP → reports/
+│   ├── evaluate.py       one-time test metrics + plots → reports/
+│   ├── explain.py        SHAP plots (train data only) → reports/figures/
 │   └── predict.py        load_model(), predict_df()  (used by API)
 ├── api/
 │   ├── __init__.py
@@ -71,7 +72,8 @@ predictive-maintenance/
 | `src/features.py` | Pure function `build_features(df) -> df`; no fitting, no I/O | config |
 | `src/models.py` | Factory returning named candidate pipelines | features, sklearn, imblearn, xgboost |
 | `src/train.py` | CV comparison → pick best → tune → threshold → fit on full train → save | data, features, models |
-| `src/evaluate.py` | One-time test-set evaluation, plots, SHAP | train artefacts |
+| `src/evaluate.py` | One-time test-set evaluation (refuses a second run), plots, PRD pass/miss | train artefacts |
+| `src/explain.py` | SHAP summary + bar plot on a TRAIN sample (no test data needed) | train artefacts |
 | `src/predict.py` | Load pipeline + metadata once; `predict_df()` returns proba + label | features |
 | `api/` | HTTP layer only: validation, routing, error handling; no ML logic | src/predict |
 | `app/dashboard.py` | UI only; talks to API through `API_URL` | API |

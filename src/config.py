@@ -18,11 +18,27 @@ REPORTS_DIR: Path = PROJECT_ROOT / "reports"
 FIGURES_DIR: Path = REPORTS_DIR / "figures"
 METRICS_PATH: Path = REPORTS_DIR / "metrics.json"
 MODEL_COMPARISON_PATH: Path = REPORTS_DIR / "model_comparison.csv"
+THRESHOLD_PLOT_PATH: Path = FIGURES_DIR / "06_threshold_precision_recall.png"
+SHAP_SUMMARY_PATH: Path = FIGURES_DIR / "07_shap_summary.png"
+SHAP_BAR_PATH: Path = FIGURES_DIR / "08_shap_importance_bar.png"
+CONFUSION_MATRIX_PATH: Path = FIGURES_DIR / "09_confusion_matrix_test.png"
+PR_CURVE_PATH: Path = FIGURES_DIR / "10_pr_curve_test.png"
 
 # --------------------------------------------------------------------- reproducibility
 RANDOM_STATE: int = 42
 TEST_SIZE: float = 0.2
 CV_FOLDS: int = 5
+TUNING_ITERATIONS: int = 30  # RandomizedSearchCV n_iter
+TUNED_MODELS: tuple[str, ...] = ("rf_weighted", "xgb_weighted")  # SMOTE/logreg lost in Phase 4
+MODEL_VERSION: str = "1.0.0"
+MAX_MODEL_SIZE_MB: float = 25.0
+SHAP_SAMPLE_SIZE: int = 3000
+
+# ------------------------------------------------------------ decision rule and targets
+# docs/DATA.md "Threshold rule" and docs/PRD.md section 7 (success metrics, test set).
+TARGET_RECALL: float = 0.85
+TARGET_PR_AUC: float = 0.80
+TARGET_PRECISION: float = 0.60
 
 # ------------------------------------------------------------------------ raw columns
 # Raw CSV header -> snake_case name used everywhere in the code.
