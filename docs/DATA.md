@@ -11,7 +11,7 @@
 |---|---|---|---|
 | UDI | `udi` | int | ID → **drop** |
 | Product ID | `product_id` | str | ID (encodes Type) → **drop** |
-| Type | `type` | cat L/M/H | feature (L ≈ 50 %, M ≈ 30 %, H ≈ 20 %) |
+| Type | `type` | cat L/M/H | feature (L ≈ 60 %, M ≈ 30 %, H ≈ 10 %) |
 | Air temperature [K] | `air_temperature_k` | float | feature |
 | Process temperature [K] | `process_temperature_k` | float | feature |
 | Rotational speed [rpm] | `rotational_speed_rpm` | int | feature |
