@@ -104,3 +104,8 @@ VALUE_RANGES: dict[str, tuple[float, float]] = {
     "torque_nm": (0.0, 100.0),
     "tool_wear_min": (0.0, 300.0),
 }
+
+# ------------------------------------------------------------------------------- API
+API_DEFAULT_PORT: int = 8000  # overridden by the PORT env var
+API_MAX_BATCH_SIZE: int = 1000
+API_DEFAULT_CORS_ORIGINS: str = "*"  # comma-separated list; overridden by CORS_ORIGINS env var
